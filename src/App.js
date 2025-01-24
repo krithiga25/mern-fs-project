@@ -27,33 +27,33 @@
 
 // export default App;
 
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Navigate,
-  Routes
-} from 'react-router-dom';
+  Routes,
+} from "react-router-dom";
 
-import Users from './user/pages/Users';
-import NewPlace from './places/pages/NewPlace';
-import MainNavigation from './shared/components/Navigation/MainNavigation';
-
+import Users from "./user/pages/Users";
+import NewPlace from "./places/pages/NewPlace";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import UserPlaces from "./places/pages/UserPlaces";
 const App = () => {
   return (
     <Router>
-      <MainNavigation/>
+      <MainNavigation />
       <main>
-      <Routes>
-        {/* Home Route */}
-        <Route path="/" element={<Users />} />
+        <Routes>
+          {/* Home Route */}
+          <Route path="/" element={<Users />} />
+          <Route path="/:userId/places" element={<UserPlaces />} />
+          {/* New Place Route */}
+          <Route path="/places/new" element={<NewPlace />} />
 
-        {/* New Place Route */}
-        <Route path="/places/new" element={<NewPlace />} />
-
-        {/* Redirect all unmatched routes to "/" */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          {/* Redirect all unmatched routes to "/" */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </main>
     </Router>
   );
